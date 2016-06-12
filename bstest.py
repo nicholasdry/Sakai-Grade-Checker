@@ -24,7 +24,7 @@ time.sleep(6)
 html = driver.page_source
 soup = BeautifulSoup(html, "html.parser")
 
-print(soup) # now prettify it!
+print(soup.prettify())
 
 
 
