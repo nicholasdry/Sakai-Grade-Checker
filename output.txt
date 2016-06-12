@@ -1,463 +1,92 @@
-<!DOCTYPE html>
-<html lang="en-US"><head>
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta content="text/css" http-equiv="Content-Style-Type">
-<meta content="en-US" http-equiv="Content-Language">
-<script type="text/javascript">
 
-    var portal = {
-        "chat": {
-            "enabled": false,
-            "pollInterval": 5000,
-            "video": {},
-            "translations": {
-                "server_unavailable": "It looks like the chat server is unavailable. Check your network connection.",
-                "server_error_send" : "Failed to send message. Reason: ",
-                "server_error_send_error": "Error: "
-            },
-        },
-        "loggedIn": true,
-        "portalPath": "https://sakai.rutgers.edu/portal",
-        "loggedOutUrl": "https://content.sakai.rutgers.edu/access/content/public/logout.html",
-        "siteId": "7d6cf024-b944-4e38-a21a-06f73f427ce4",
-        "siteTitle": "Computer Archtecture Sp16",
-        "shortDescription": "",
-        "locale": "en-US",
-        "user": {
-            "id": "dc077268-2ec7-40fc-a307-e0a9c7d4760d",
-            "eid": "nsd48"
-        },
-        "timeoutDialog": {
-            "enabled": true,
-            "seconds": 300
-        },
-        "toggle": {
-            "allowauto": true,
-            "tools": true,
-            "sitenav": false
-        }
-    };
-</script>
-<script src="/portal/scripts/sessionstoragemanager.js?version=" type="text/javascript"></script>
-<!-- this causes problems for layout needs investigating -->
-<link href="/portal/styles/portalstyles.css?version=" media="all" rel="stylesheet" type="text/css">
-<!--[if gte IE 5]><![if lt IE 7]>
-    <link href="/portal/styles/portalstyles-ie5.css?version=" type="text/css" rel="stylesheet" media="all" />
-<![endif]><![endif]-->
-<link href="/library/skin/neo-aziz-sakai10/portal.css" media="all" rel="stylesheet" type="text/css">
-<link href="/library/js/jquery/cluetip/1.2.10/css/jquery.cluetip.css" media="all" rel="stylesheet" type="text/css">
-<title>sakai.rutgers.edu : Computer Archtecture Sp16 : Gradebook 2</title>
-<link href="/library/skin/tool_base.css?version=" media="all" rel="stylesheet" type="text/css">
-<link href="/library/skin/neo-aziz-sakai10/tool.css?version=" media="all" rel="stylesheet" type="text/css">
-<script src="/library/js/headscripts.js?version=" type="text/javascript"></script>
-<script type="text/javascript">var sakai = sakai || {}; sakai.editor = sakai.editor || {};  sakai.locale = sakai.locale || {};
-sakai.locale.userCountry = 'US';
-sakai.locale.userLanguage = 'en';
-sakai.locale.userLocale = 'en_US';
-sakai.editor.collectionId = '/user/dc077268-2ec7-40fc-a307-e0a9c7d4760d/';
-sakai.editor.enableResourceSearch = false;</script>
-<script type="text/javascript">var CKEDITOR_BASEPATH='/library/editor/ckeditor/';
-</script>
-<script src="/library/editor/ckeditor/ckeditor.js?version=" type="text/javascript"></script><style>.cke{visibility:hidden;}</style>
-<script src="/library/editor/ckeditor.launch.js?version=" type="text/javascript"></script>
-<script src="/library/js/jquery/jquery-1.9.1.min.js?version=" type="text/javascript"></script>
-<script src="/library/js/jquery/jquery-migrate-1.2.1.min.js?version=" type="text/javascript"></script>
-<script src="/library/js//facts.js?version=" type="text/javascript"></script>
-<script src="/library/js//trimpath-template-latest.js?version=" type="text/javascript"></script>
-<script src="/library/js/jquery/bgiframe/jquery.bgiframe.min.js?version=" type="text/javascript"></script>
-<script src="/library/js/jquery/cluetip/1.2.10/jquery.cluetip.min.js?version=" type="text/javascript"></script>
-<script src="/portal/scripts/neoscripts.js?version=" type="text/javascript"></script>
-<script src="/library/js/jquery/notify/1.2.2/jquery.pnotify.min.js?version=" type="text/javascript"></script>
-<script src="/library/js/jquery/qtip/jquery.qtip-latest.min.js?version=" type="text/javascript"></script>
-<link href="/library/js/jquery/qtip/jquery.qtip-latest.min.css?version=" rel="stylesheet" type="text/css">
-<script src="/library/js/jquery/qtip/tutorial.js?version=" type="text/javascript"></script>
-<script language="JavaScript" src="/media-gallery-tool/js/kaltura-upgrade.js" type="text/javascript"></script>
-<script type="text/javascript">
-document.write('<!-- jquery version '+jQuery.fn.jquery+' -->\n');
-</script><!-- jquery version 1.9.1 -->
-</link></link></link></link></link></link></meta></meta></meta></head>
-<body class="portalBody">
-<noscript>&lt;div id="portal_js_warn"&gt;Sakai works much better when JavaScript is enabled. Please enable JavaScript in your Browser.&lt;/div&gt;</noscript>
-<script type="text/javascript">
-	var sakaiPortalWindow = "";
-	$(document).ready(function() {
-			setupSkipNav();
-	});
-	</script>
-<script type="text/javascript">
-	$(document).ready(function() {
+ 
 
-		var toggleClass=""
-					toggleClass="toggleTools"
-								setupToolToggle(toggleClass);
-	});
-</script>
-<!-- site.vm -->
-<!-- start includeSiteNav -->
-<div id="portalOuterContainer">
-<div id="portalContainer">
-<div id="headerMax">
-<div id="skipNav">
-<a accesskey="c" class="skip internalSkip" href="#tocontent" title="jump to content">
-				jump to content
-				</a>
-<a accesskey="l" class="skip internalSkip" href="#totoolmenu" title="jump to tools list">
-					jump to tools list
-				</a>
-<a accesskey="w" class="skip internalSkip" href="#sitetabs" title="jump to site list">
-					jump to site list
-				</a>
-<a accesskey="m" class="skip internalSkip" href="#" id="openDrawer" title="open drawer">
-                         open drawer
-                    </a>
-</div>
-<div class="course" id="siteNavWrapper">
-<div id="mastHead" role="banner">
-<div id="mastLogo">
-<img alt="Logo" src="/library/skin/neo-aziz-sakai10/images/logo_inst.gif" title="Logo">
-</img></div>
-<div id="mastBanner">
-<img alt="Banner" src="/library/skin/neo-aziz-sakai10/images/banner_inst.gif" title="Banner">
-</img></div>
-</div>
-<!-- START from NEO includeTabs.vm -->
-<!-- start includeTabs -->
-<div class="siteNavWrap course"><div id="maxToolsInt" style="display:none">10</div><div id="maxToolsAnchor" style="display:none">Go to the site to view all</div>
-<div id="siteNav">
-<!-- login component -->
-<div id="mastLogin">
-<div id="loginLinks">
-<span class="topnav">
-<span aria-haspopup="true" class="nav-menu">
-<ul class="nav-submenu subnav" role="menu">
-<li class="submenuitem"><span><a href="https://sakai.rutgers.edu/portal/site/%7Ensd48/page/5df1563e-b405-4b9c-b798-af97a9220075?sakai_nav_minimized=true&amp;sakai.state.reset=true" id="loginUser" role="menuitem"><span class="toolMenuIcon submenuitem-profile"> </span> Nicholas Dry (nsd48)</a></span></li>
-<li class="submenuitem"><span><a href="https://sakai.rutgers.edu/portal/site/%7Ensd48/page/5d8e2865-47c7-4da8-a640-e9a9fe1f9712?sakai_nav_minimized=true" role="menuitem"><span class="toolMenuIcon submenuitem-prefs"> </span>Preferences</a></span></li>
-<li class="submenuitem"><span><a href="https://sakai.rutgers.edu/portal/site/%7Ensd48/page/60df0c2d-0384-4e6d-8800-656907642a28?sakai_nav_minimized=true&amp;panel=Shortcut&amp;sakai_action=doNew_site&amp;sakai.state.reset=true" id="addNewSiteLink" role="menuitem"><span class="toolMenuIcon submenuitem-new-site"> </span>+ Add New Site</a></span></li>
-<li class="submenuitem lastMenuItem"><span><a href="#" id="tutorialLink" onclick="startTutorial({});" role="menuitem"><span class="toolMenuIcon submenuitem-tutorial"> </span>Tutorial</a></span></li>
-</ul>
-<span class="drop" tabindex="-1"></span>
-</span>
-</span>
-<a href="https://sakai.rutgers.edu/portal/logout" id="loginLink1" title="Logout">Logout</a>
-</div>
-</div>
-<!-- end login component -->
-<div aria-labelledby="sitetabs" id="linkNav" role="navigation">
-<!-- this allows us to reliably detect if the browser is internet explorer, depends on these elements ul#topnav h1#sitetabs -->
-<script type="text/javascript">var sakai_portal_ie_detected=false;</script>
-<!--[if IE]><script type="text/javascript">sakai_portal_ie_detected=true;</script><![endif]-->
-<h1 class="skip" id="sitetabs">Sites list begins here</h1>
-<ul aria-label="Sites list begins here" class="topnav" id="topnav" role="menubar">
-<li class="nav-menu"><a aria-haspopup="true" href="https://sakai.rutgers.edu/portal/site/%7Ensd48" role="menuitem" title="My Workspace"><span>My Workspace</span></a>
-<span class="drop" data="~dc077268-2ec7-40fc-a307-e0a9c7d4760d" tabindex="-1"></span>
-</li>
-<li class="nav-menu"><a aria-haspopup="true" href="https://sakai.rutgers.edu/portal/site/11a1adb7-c528-4c8d-af7f-1172e9beba00" role="menuitem" title="220:320 Interm Micro_Bhuyan"><span>220:320 Interm Micro_ ...</span></a>
-<span class="drop" data="11a1adb7-c528-4c8d-af7f-1172e9beba00" tabindex="-1"></span>
-</li>
-<li class="nav-selected nav-menu"><a aria-haspopup="true" href="#" role="menuitem" title="Computer Archtecture Sp16"><span>Computer Architecture</span></a>
-<span class="drop" data="7d6cf024-b944-4e38-a21a-06f73f427ce4" tabindex="-1"></span>
-</li>
-<li class="nav-menu"><a aria-haspopup="true" href="https://sakai.rutgers.edu/portal/site/3c91ebbf-3c52-4572-98f9-899a77c7f227" role="menuitem" title="205 Spr 16"><span>205 Spr 16</span></a>
-<span class="drop" data="3c91ebbf-3c52-4572-98f9-899a77c7f227" tabindex="-1"></span>
-</li>
-<li class="nav-menu"><a aria-haspopup="true" href="https://sakai.rutgers.edu/portal/site/8f1472b9-9413-4795-99d5-fd1fa81b17c3" role="menuitem" title="International Econ. 07 Sp16"><span>International Economi ...</span></a>
-<span class="drop" data="8f1472b9-9413-4795-99d5-fd1fa81b17c3" tabindex="-1"></span>
-</li>
-<li class="nav-menu"><a aria-haspopup="true" href="https://sakai.rutgers.edu/portal/site/848d9ee2-3e91-4935-bed6-ac8e4c77f22c" role="menuitem" title="DATA 101 01 Sp16"><span>DATA 101 01 Sp16</span></a>
-<span class="drop" data="848d9ee2-3e91-4935-bed6-ac8e4c77f22c" tabindex="-1"></span>
-</li>
-<li class="more-tab"><a aria-haspopup="true" href="javascript:;" onclick="return dhtml_view_sites();" title="More Sites"><span>More Sites</span></a></li>
-</ul>
-</div> <!-- /linkNav -->
-</div>
-<div class="divColor" id="tabBottom">
-</div>
-<div id="selectSite" style="display:none">
-<div id="otherSiteSearch">
-<label for="txtSearch">Search sites in this drawer</label> <input id="txtSearch" maxlength="50" name="txtSearch" type="text">
-<a href="#" id="imgSearch" style="display:none"><img alt="Cancel Search" src="/library/skin/neo-aziz-sakai10/images/cancel.png" title="Cancel Search"/></a>
-<span id="noSearchResults" style="display:none">No search results found</span>
-</input></div>
-<ul id="otherSitesMenu">
-<li><a href="https://sakai.rutgers.edu/portal/site/%7Ensd48/page/60df0c2d-0384-4e6d-8800-656907642a28?sakai_nav_minimized=true&amp;sakai.state.reset=true" id="allSites"><span>View All Sites</span></a></li>
-<li><a href="https://sakai.rutgers.edu/portal/site/%7Ensd48/page/60df0c2d-0384-4e6d-8800-656907642a28?sakai_nav_minimized=true&amp;panel=Shortcut&amp;sakai_action=doNew_site&amp;sakai.state.reset=true" id="newSite"><span>+ Add New Site</span></a></li>
-<li><a href="https://sakai.rutgers.edu/portal/site/%7Ensd48/page/5d8e2865-47c7-4da8-a640-e9a9fe1f9712?sakai_nav_minimized=true"><span>Preferences</span></a></li>
-<li id="otherSiteCloseW">
-<a href="#" onclick="closeDrawer()" title="Close this drawer"><span>X</span><span class="skip">Close this drawer</span></a>
-</li>
-</ul>
-<div id="otherSitesCategorWrap">
-<h4>Summer 2016</h4>
-<ul class="otherSitesCategorList">
-<li>
-<a href="https://sakai.rutgers.edu/portal/site/ca77d8bd-4f61-466e-8d5a-5d5f51e03ef1" title="ONLINE GENERAL PHYSICS 204 Summer 2016"><span class="fullTitle">ONLINE GENERAL PHYSIC ...</span></a><a class="toolMenus" href="#" id="ca77d8bd-4f61-466e-8d5a-5d5f51e03ef1"> <span class="skip">Tools</span></a>
-</li>
-</ul>
-<h4>Spring 2016</h4>
-<ul class="otherSitesCategorList">
-<li>
-<a href="https://sakai.rutgers.edu/portal/site/3c91ebbf-3c52-4572-98f9-899a77c7f227" title="205 Spr 16"><span class="fullTitle">205 Spr 16</span></a><a class="toolMenus" href="#" id="3c91ebbf-3c52-4572-98f9-899a77c7f227"> <span class="skip">Tools</span></a>
-</li>
-<li>
-<a href="https://sakai.rutgers.edu/portal/site/11a1adb7-c528-4c8d-af7f-1172e9beba00" title="220:320 Interm Micro_Bhuyan"><span class="fullTitle">220:320 Interm Micro_ ...</span></a><a class="toolMenus" href="#" id="11a1adb7-c528-4c8d-af7f-1172e9beba00"> <span class="skip">Tools</span></a>
-</li>
-<li>
-<a href="https://sakai.rutgers.edu/portal/site/7d6cf024-b944-4e38-a21a-06f73f427ce4" title="Computer Archtecture Sp16"><span class="fullTitle">Computer Architecture</span></a><a class="toolMenus" href="#" id="7d6cf024-b944-4e38-a21a-06f73f427ce4"> <span class="skip">Tools</span></a>
-</li>
-<li>
-<a href="https://sakai.rutgers.edu/portal/site/848d9ee2-3e91-4935-bed6-ac8e4c77f22c" title="DATA 101 01 Sp16"><span class="fullTitle">DATA 101 01 Sp16</span></a><a class="toolMenus" href="#" id="848d9ee2-3e91-4935-bed6-ac8e4c77f22c"> <span class="skip">Tools</span></a>
-</li>
-<li>
-<a href="https://sakai.rutgers.edu/portal/site/8f1472b9-9413-4795-99d5-fd1fa81b17c3" title="International Econ. 07 Sp16"><span class="fullTitle">International Economi ...</span></a><a class="toolMenus" href="#" id="8f1472b9-9413-4795-99d5-fd1fa81b17c3"> <span class="skip">Tools</span></a>
-</li>
-</ul>
-<h4>Spring 2012</h4>
-<ul class="otherSitesCategorList">
-<li>
-<a href="https://sakai.rutgers.edu/portal/site/cfb36de7-586c-4f7e-8d88-31e92efa0181" title="Labs 1on1 Training"><span class="fullTitle">Labs 1on1 Training</span></a><a class="toolMenus" href="#" id="cfb36de7-586c-4f7e-8d88-31e92efa0181"> <span class="skip">Tools</span></a>
-</li>
-</ul>
-<h4>OTHER</h4>
-<ul class="otherSitesCategorList">
-<li>
-<a href="https://sakai.rutgers.edu/portal/site/%7Ensd48" title="My Workspace">
-<span class="fullTitle">My Workspace</span>
-</a>
-<a class="toolMenus" href="#" id="~dc077268-2ec7-40fc-a307-e0a9c7d4760d"> <span class="skip">Tools</span></a>
-</li>
-</ul>
-<h4>PROJECTS</h4>
-<ul class="otherSitesCategorList">
-<li>
-<a href="https://sakai.rutgers.edu/portal/site/6483918d-a1bb-404e-a78f-51c7919a4ce0" title="2017 SAS Juniors"><span class="fullTitle">2017 SAS Juniors</span></a><a class="toolMenus" href="#" id="6483918d-a1bb-404e-a78f-51c7919a4ce0"> <span class="skip">Tools</span></a>
-</li>
-<li>
-<a href="https://sakai.rutgers.edu/portal/site/990958fd-21d7-4a47-8013-9efa341cac31" title="Help Desk Training"><span class="fullTitle">Help Desk Training</span></a><a class="toolMenus" href="#" id="990958fd-21d7-4a47-8013-9efa341cac31"> <span class="skip">Tools</span></a>
-</li>
-<li>
-<a href="https://sakai.rutgers.edu/portal/site/5e630e64-0048-4a55-8dc7-4b0fda2664ee" title="ResNet File Uploads"><span class="fullTitle">ResNet File Uploads</span></a><a class="toolMenus" href="#" id="5e630e64-0048-4a55-8dc7-4b0fda2664ee"> <span class="skip">Tools</span></a>
-</li>
-</ul>
-</div> </div>
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-        setupSiteNav();
-        // sakai_portal_ie_detected should have been set above
-        if (sakai_portal_ie_detected) {
-            // SAK-22308
-            //if (jQuery.browser.msie && jQuery('ul#topnav[role="navigation"]') && jQuery('h1#sitetabs')) {
-            var $ul_topnav = jQuery('ul#topnav');
-            var aria_label_val = $ul_topnav.attr('aria-label');
-            jQuery('h1#sitetabs').attr('role','navigation').attr('aria-label', aria_label_val);
-            jQuery('div#linkNav').removeAttr('role').removeAttr('aria-labelledby');
-            $ul_topnav.removeAttr('aria-label');
-        }
-    });
-</script>
-</div>
-<!-- /tabsCssClass -->
-<!-- end includeTabs -->
-<!-- END from includeTabs.vm -->
-</div>
-</div>
-<!-- START from includePageWithNav.vm -->
-<div class="course" id="container">
-<!-- START from includePageNav.vm -->
-<!-- start includePageNav -->
-<div class="divColor" id="toolMenuWrap">
-<!-- CSRF -->
-<input id="sakai.csrf.token" name="csrftoken" type="hidden" value="ebb7e777b5baa7d46bce9d18ad10f3c8c2d502d48a54a6f5de8c98661cc878d2">
-<div id="worksiteLogo">
-<p id="siteType">course</p>
-</div>
-<h1 class="skip" id="totoolmenu">Tools list begins here</h1>
-<div aria-label="Tools list begins here" id="toolMenu" role="navigation">
-<ul>
-<li>
-<a class="toolMenuLink " href="https://sakai.rutgers.edu/portal/site/7d6cf024-b944-4e38-a21a-06f73f427ce4/page/8bea094f-0a9b-4816-889d-09808133dedb" title="For displaying Site information | Display recent announcements, updated as messages arrive | Display recent announcements, updated as messages arrive">
-<span class="toolMenuIcon icon-sakai-iframe-site ">Home</span>
-</a>
-</li>
-<li>
-<a class="toolMenuLink " href="https://sakai.rutgers.edu/portal/site/7d6cf024-b944-4e38-a21a-06f73f427ce4/page/f3aab6c6-ff98-4dcd-b8af-f79af87ccf8f" title="Allows the instructor to broadcast important information to participants in a project or course site by e-mailing it to them.  Can also post the information to the home page of your work site.">
-<span class="toolMenuIcon icon-sakai-announcements ">Announcements</span>
-</a>
-</li>
-<li>
-<a class="toolMenuLink " href="https://sakai.rutgers.edu/portal/site/7d6cf024-b944-4e38-a21a-06f73f427ce4/page/a0fbf98a-e949-415f-ac7f-eccce907efb0" title="Allows you and your site participants to engage in structured, archived, and real-time conversations online.">
-<span class="toolMenuIcon icon-sakai-chat ">Chat Room</span>
-</a>
-</li>
-<li>
-<a class="toolMenuLink " href="https://sakai.rutgers.edu/portal/site/7d6cf024-b944-4e38-a21a-06f73f427ce4/page/35d3b239-e9fd-49ba-8fa0-75fbd0bdd86e" title="An online directory where you can upload and store various documents, videos, and other material for participants to access.">
-<span class="toolMenuIcon icon-sakai-resources ">Resources</span>
-</a>
-</li>
-<li>
-<a class="toolMenuLink " href="https://sakai.rutgers.edu/portal/site/7d6cf024-b944-4e38-a21a-06f73f427ce4/page/61018c0e-7968-492e-a946-d302c1dd442c" title="For posting a syllabus to your site">
-<span class="toolMenuIcon icon-sakai-syllabus ">Syllabus</span>
-</a>
-</li>
-<li class="selectedTool">
-<a aria-disabled="true" class="toolMenuLink " role="presentation" title="Gradebook 2">
-<span class="toolMenuIcon icon-sakai-gradebook-gwt-rpc "> Gradebook 2</span>
-</a>
-</li>
-<li>
-<a class="toolMenuLink " href="https://sakai.rutgers.edu/portal/site/7d6cf024-b944-4e38-a21a-06f73f427ce4/page/cb0ebad6-2a56-41d9-846f-a73554ddee1d" title="Allows instructors who teach multiple sections or the same class to manage all the class sections within one site. Instructors can assign students to different sections within the Section Info tool.">
-<span class="toolMenuIcon icon-sakai-sections ">Section Info</span>
-</a>
-</li>
-<li>
-<a class="toolMenuLink " href="https://sakai.rutgers.edu/portal/site/7d6cf024-b944-4e38-a21a-06f73f427ce4/page/777aecef-ffef-4c54-ba1a-312542c52b4c" title="For viewing the site participants list">
-<span class="toolMenuIcon icon-sakai-site-roster2 ">Site Members</span>
-</a>
-</li>
-<li>
-<a class="toolMenuLink " href="https://sakai.rutgers.edu/portal/site/7d6cf024-b944-4e38-a21a-06f73f427ce4/page/d1fe4e02-83a0-40b8-917e-8f9274b4010f" title="Allows you to quickly and easily create surveys. A good way to judge the opinions of students and group members.">
-<span class="toolMenuIcon icon-sakai-poll ">Polls</span>
-</a>
-</li>
-<li>
-<a class="toolMenuLink " href="https://sakai.rutgers.edu/portal/site/7d6cf024-b944-4e38-a21a-06f73f427ce4/page/dece0fdd-6b6f-4563-8701-bbdb42bb92bf" title="Allows you to create, distribute, collect, return, and grade assignments online.  All submissions are private between each individual student and the instructor(s) and Teaching Assistant(s).">
-<span class="toolMenuIcon icon-sakai-assignment-grades ">Assignments</span>
-</a>
-</li>
-<li>
-<a class="toolMenuLink " href="https://sakai.rutgers.edu/portal/site/7d6cf024-b944-4e38-a21a-06f73f427ce4/page/c94563f0-2cd0-407a-8e8f-54132a9bac69" title="The main administrative tool panel that allows you to add/remove participants, update your rosters, and manage your site information.">
-<span class="toolMenuIcon icon-sakai-siteinfo ">Site Info</span>
-</a>
-</li>
-<li>
-<a accesskey="6" class="toolMenuLink" href="https://sakai.rutgers.edu/portal/help/main" onclick="openWindow('https://sakai.rutgers.edu/portal/help/main', 
-									'Help', 'resizable=yes,toolbar=no,scrollbars=yes,menubar=yes,width=1024,height=768'); 
-									return false" target="_blank" title="Help">
-<span class="toolMenuIcon icon-sakai-help"> Help</span>
-<span class="skip">Opens in a new window</span> </a>
-</li>
-</ul>
-</div>
-<!-- Add subsite lists -->
-</input></div>
-<div id="togglebar">
-<a href="#" id="toggleToolMenu" onmouseup="blur()" title="Minimize tool navigation ">
-<span id="toggleToolMax"><em class="skip">Minimize tool navigation</em> </span>
-<span id="toggleNormal" style="display:none"><em class="skip">Expand tool navigation</em> </span>
-</a>
-</div>
-<h1 class="skip" id="tocontent">Content begins here</h1>
-<!-- end includePageNav -->
-<!-- end page nav -->
-<!-- END from includePageNav.vm -->
-<!-- START from includePageBody.vm -->
-<div id="content" role="main"><div id="innercontent">
-<div id="col1">
-<!-- start Tool -->
-<div class="portletTitleWrap">
-<div class="portletTitle">
-<div class="title">
-<a href="https://sakai.rutgers.edu/portal/tool-reset/80310b25-5929-44e5-9068-ac6cbd07f7ae/?panel=Main" target="Main80310b25x5929x44e5x9068xac6cbd07f7ae" title="Reset">
-<img alt="Reset" border="1" src="/library/image/transparent.gif"/></a>
-<h2><span class="siteTitle">Computer Archtecture Sp16:</span> Gradebook 2</h2>
-</div>
-<div class="action">
-<a class="tool-directurl" href="#Main80310b25x5929x44e5x9068xac6cbd07f7ae_directurl" rel="#Main80310b25x5929x44e5x9068xac6cbd07f7ae_directurl" title="Direct link to this tool">
-<img alt="Direct link to this tool" border="0" src="/library/image/transparent.gif">
-</img></a>
-<div class="direct-url-wrap" id="Main80310b25x5929x44e5x9068xac6cbd07f7ae_directurl" style="display: none;">
-<input onclick="toggleShortUrlOutput('https://sakai.rutgers.edu/portal/directtool/80310b25-5929-44e5-9068-ac6cbd07f7ae/', this, 'Main80310b25x5929x44e5x9068xac6cbd07f7ae_urlholder');" type="checkbox">
-<span>Short URL</span>
-<textarea class="Main80310b25x5929x44e5x9068xac6cbd07f7ae_urlholder" style="resize: none; width: 96%">https://sakai.rutgers.edu/portal/directtool/80310b25-5929-44e5-9068-ac6cbd07f7ae/</textarea>
-</input></div>
-<a href="https://sakai.rutgers.edu/portal/help/main?help=sakai.gradebook.gwt.rpc" onclick="openWindow('https://sakai.rutgers.edu/portal/help/main?help=sakai.gradebook.gwt.rpc', 'Help',
-								  'resizable=yes,toolbar=no,scrollbars=yes,menubar=yes,width=1024,height=768'); return false" target="_blank" title="Help for Gradebook 2">
-<img alt="Help for Gradebook 2" border="0" src="/library/image/transparent.gif">
-<span class="skip">Opens in a new window</span> </img></a>
-</div>
-</div>
-</div>
-<!-- end Tool -->
-<!-- start Tool Body -->
-<div class="portletMainWrap">
-<iframe allowfullscreen="" class="portletMainIframe" frameborder="0" height="475" id="Main80310b25x5929x44e5x9068xac6cbd07f7ae" marginheight="0" marginwidth="0" mozallowfullscreen="" name="Main80310b25x5929x44e5x9068xac6cbd07f7ae" scrolling="auto" src="https://sakai.rutgers.edu/portal/tool/80310b25-5929-44e5-9068-ac6cbd07f7ae?panel=Main" title="Gradebook 2 " webkitallowfullscreen="" width="100%">
-</iframe>
-</div>
-<!-- end Tool Body -->
-</div>
-</div>
-</div>
-<div>
-<!-- include bottom -->
-<div id="footer" role="contentinfo">
-<div class="footerExtNav">
-<ul id="footerLinks"><li><span><a href="http://oirt.rutgers.edu" target="_blank">Office of Instructional and Research Technology</a></span></li><li><span><a href="mailto:sakai@rutgers.edu" target="_blank">sakai@rutgers.edu</a></span></li><li><span>   848.445.8721    </span></li><li><span><a href="http://sakaiproject.org" target="_blank">The Sakai Project</a></span></li></ul>
-</div>
-<div id="footerInfo">
-<a href="http://www.rutgers.edu" target="_blank">
-<img alt="Rutgers University" border="0" src="/library/image/rutgers_red_half.jpg">
-<span class="skip"> (Opens in a new window)</span>
-</img></a>
-<!-- end include Bottom -->
-</div>
-<div class="sakaiCopyrightInfo">Copyright 2003-2016 The Apereo Foundation. All rights reserved. Portions of Sakai are copyrighted by other parties as described in the Acknowledgments screen.</div>
-<div class="serviceInfo">sakai.rutgers.edu - RU-10.4 (Rev: v10.4-489-8424696) - Sakai 10.4 FCS (Kernel 10.4) - Server sakai-prod2.oirt.rutgers.edu</div>
-<div class="server-time-container">
-										Server Time:
-					<span class="server-time" id="serverTime">Tue, 07 Jun 2016 18:33:18 EDT</span>
-</div>
-<script type="text/javascript">
-					// <!--
-					updateFooterTime = (function() {
-														var serverTzDisplay='EDT';
-							var serverServerDateAndGMTOffset = new Date(1465324398450)
-							var serverLocalOffset = serverServerDateAndGMTOffset.getTime() - (new Date()).getTime();
+ 
 
-							return function() {
-									var offsetDate = new Date((new Date()).getTime() + serverLocalOffset);
-									var dateString = offsetDate.toUTCString()
-											.replace(/GMT/, serverTzDisplay)
-											.replace(/UTC/, serverTzDisplay);
+Name
+Nicholas Dry
+Email
+nicholas.dry@rutgers.edu
+Id
+nsd48
+Section
 
-									document.getElementById('serverTime').innerHTML = dateString;
-	
-																		
-									setTimeout('updateFooterTime()', 1000);
-								};
-						})();
-							
-					updateFooterTime();
-					// --> 
-				</script>
-<div id="footerAppTray">
-<h1 class="skip">Users present begins here</h1>
-<div id="footerAppPresence">
-<a href="#" id="presenceToggle"><img alt="" src="/library/image/silk/user_green.png" style="vertical-align: middle;"><span class="skip">Toggle users present panel</span></img></a>
-<span class="skip">Number of users present:</span> <span id="presenceCount"></span>
-</div>
-</div>
-</div>
-<div class="trayPopup" id="presenceArea" style="display: none">
-<div id="presenceWrapper">
-<div id="presenceTitle">Users present:<div><a class="trayPopupClose" href="#" id="presenceClose">x</a></div></div>
-<div id="presenceIframe">
-					 
-				</div>
-<script type="text/javascript">
-	//these are global variables...
-	var sakaiPresenceTimeDelay = 3000;
-	var sakaiPresenceFragment = "https://sakai.rutgers.edu/portal/presence/7d6cf024-b944-4e38-a21a-06f73f427ce4?output_fragment=yes&auto=true";
-    var sakaiLastPresenceTimeOut = setTimeout('updatePresence()', sakaiPresenceTimeDelay); 
-</script>
-</div>
-</div>
-</div>
-<!-- end includePageBody -->
-<!-- END from includePageBody.vm -->
-<div id="tutorial"></div>
-</div>
-<!-- END from includePageWithNav.vm -->
-</div>
-</div>
-<!-- end includeSiteNav -->
-<!-- end site.vm -->
-<div id="cluetip-waitimage" style="position: absolute; display: none;"></div><div id="cluetip" style="position: absolute; display: none;"><div class="cluetip-outer" style="position: relative; z-index: 97;"><h3 class="cluetip-title ui-widget-header ui-cluetip-header"></h3><div class="cluetip-inner ui-widget-content ui-cluetip-content"></div></div><div class="cluetip-extra"></div><div class="cluetip-arrows ui-state-default"></div></div></body></html>
+
+
+
+
+
+
+
+
+
+
+Grades Distribution
+
+
+
+
+
+
+
+
+ 
+
+
+
+Individual Scores (click on a row to see comments)
+Item
+Score
+Out of
+Date Due
+Comments
+
+Assignment 05 : Cache Simulator
+
+200
+2016-05-01
+
+Assignment 01: A Partial Tokenizer
+70.9
+100
+2016-02-12
+
+Assignment 02: Computer Arithmetic
+97.5
+120
+2016-03-10
+
+Assignment 03: Assembly Language Programming
+110
+120
+2016-03-30
+
+Assignment 04: Y86 Emulator
+210
+300
+2016-05-01
+
+Midterm Exam
+95
+110
+ 
+
+Final Exam
+125
+165
+ 
+
+ 
+ 
+
+
+ 
+Comments:
+
+
+
+
+
+<H3>The Sakai Gradebook requires JavaScript</H3> <ul> <li>Please ensure that JavaScript is enabled for your browser and reload</li> </ul>
+
+
