@@ -90,7 +90,7 @@ attempts = 0
 
 while attempts < 3:
     try:
-        driver = webdriver.Firefox()  # PhantomJS allows the script to run without opening up Firefox or any browser
+        driver = webdriver.PhantomJS()  # PhantomJS allows the script to run without opening up Firefox or any browser
         driver.get("https://cas.rutgers.edu/login?service=https%3A%2F%2Fsakai.rutgers.edu%2Fsakai-login-tool%2Fcontainer")  # This is the sakai homepage
 
         username_field = driver.find_element_by_name("username") # Sakai nicely names its fields.
@@ -100,7 +100,7 @@ while attempts < 3:
         password_field.submit() # submit it
 
         # This is the gradebook which are attempting to access
-        driver.get("https://sakai.rutgers.edu/portal/site/7d6cf024-b944-4e38-a21a-06f73f427ce4/page/fedd6c39-4d6a-4a46-8a2f-f8aaf97b5df4")
+        driver.get("https://sakai.rutgers.edu/portal/site/8f1472b9-9413-4795-99d5-fd1fa81b17c3/page/9fc30ca2-3349-4a21-85df-0cf6e69481bd")
         break
     except:
         print("Connection Error: Trying Again")
