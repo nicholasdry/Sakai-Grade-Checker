@@ -81,6 +81,11 @@ def gradebookTwo():
 
 loadPastTextFile()
 
+print("Loaded")
+
+for i in pastTextFile:
+    print(i)
+
 attempts = 0
 
 while attempts < 3:
@@ -121,3 +126,6 @@ else:
 
 # TODO: Send notification, Title = Class Name, Subtitle = Assignment Name, Message = Assignment Grade
 checkSimilarity()
+
+for i in current:
+    print(i)
