@@ -1,16 +1,16 @@
 # Nicholas Dry http://www.nicholasdry.com
-# Copyright 2016
 
 # TODO: Allow for the checking of more than one class
 # TODO: Check if the past.txt file exists, if not, create and load the first scrape into it
 # TODO: Implement API for email updates if grade updates
 
-from bs4 import BeautifulSoup   # This module allows for the scraping of the website.
+from bs4 import BeautifulSoup
 from selenium import webdriver  # This module allows for the authentication through websites.
-import time # This module allows for the sleep function to be called.
-import os
-import sys
 from twilio.rest import TwilioRestClient
+import time
+import os
+import os.path
+import sys
 
 ##########################################################################
 # BELOW ARE THE VARIABLES WHICH NEED TO BE ALTERED DEPENDING ON THE USER.#
@@ -27,10 +27,19 @@ smsAlert = True
 iosAlert = True
 emailAlert = False
 
-# These variables hold
+# These variables hold a list style of all the information per class
 pastTextFile = []
 currentTextFile = []
 current = []
+
+# This method is called at the end of the program to copy the new current into
+# past.txt and remove current.txt
+def cleanUp():
+    past = open("past.txt", "w")
+    for i in current:
+        past.write("%s\n" % i)
+
+    os.remove("current.txt")
 
 # TODO: Saving of a list into a text file, then loading it back into a dictionary
 # This method pulls a past text file called past.txt and saves it into a list,
@@ -57,6 +66,14 @@ def checkSimilarity():
             sendEmail()
         else:
             print("Your grade has been updated.")
+        cleanUp()
+
+# This method is called in order to write the new past file.
+# IN DEVELOPMENT
+def createNewPast():
+
+    sys.exit()
+    return 0
 
 # This method is for anyone on Mac OSX who wishes to receive notifications of when the grades are posted through Notification Center.
 def sendNotification(title, subtitle, message):
@@ -92,6 +109,8 @@ def gradebookOne():
 
     gradeDictionary = {}
 
+    # TODO: Edit the below methods to look similar to Gradebook 2 since we are simply checking smaller
+    # chunks of HTML now.
     count = 0
 
     for i in assignmentNames:
@@ -119,25 +138,26 @@ def gradebookTwo():
     for i in current:
         outputToCurrent.write("%s\n" % i)
 
-    # with open('current.txt') as f:
-    #     currentTextFile.append(f.read().split())
-
-
-loadPastTextFile()
+if os.path.isfile("past.txt"):
+    loadPastTextFile()
+# TODO: Finish method below.
+else:
+    createNewPast()
 
 attempts = 0
 while attempts < 3:
     try:
-        driver = webdriver.PhantomJS()  # PhantomJS allows the script to run without opening up Firefox or any browser
+        # PhantomJS allows the script to run without opening up Firefox or any browser.
+        driver = webdriver.PhantomJS()
         driver.get("https://cas.rutgers.edu/login?service=https%3A%2F%2Fsakai.rutgers.edu%2Fsakai-login-tool%2Fcontainer")  # This is the sakai homepage
 
-        username_field = driver.find_element_by_name("username") # Sakai nicely names its fields.
+        username_field = driver.find_element_by_name("username")
         password_field = driver.find_element_by_name("password")
-        username_field.send_keys(netID) # User NetID
-        password_field.send_keys(netIDPassword) # User
-        password_field.submit() # submit it
+        username_field.send_keys(netID)
+        password_field.send_keys(netIDPassword)
+        password_field.submit()
 
-        # This is the gradebook which are attempting to access
+        # This is the gradebook which are attempting to access.
         driver.get("https://sakai.rutgers.edu/portal/site/3c91ebbf-3c52-4572-98f9-899a77c7f227/page/301b5faf-8f77-4f4a-a282-e44edc801f3d")
         break
     except:
@@ -162,8 +182,6 @@ if gradebook.title.string == "Gradebook":
 else:
     gradebookOne()
 
-# TODO: Send notification, Title = Class Name, Subtitle = Assignment Name, Message = Assignment Grade
-# checkSimilarity()
 loadCurrentTextFile()
 
 checkSimilarity()
