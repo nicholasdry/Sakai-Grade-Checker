@@ -3,6 +3,7 @@
 # TODO: Allow for the checking of more than one class
 # TODO: Check if the past.txt file exists, if not, create and load the first scrape into it
 # TODO: Implement API for email updates if grade updates
+# POTENTIAL TODO: Create a blank "past.txt" file if there isnt one already to solve the problem of installing
 
 from bs4 import BeautifulSoup
 from selenium import webdriver  # This module allows for the authentication through websites.
