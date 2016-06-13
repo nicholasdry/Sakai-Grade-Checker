@@ -2,10 +2,9 @@
 
 # TODO: Allow for the checking of more than one class
 # TODO: Implement API for email updates if grade updates
-# POTENTIAL TODO: Create a blank "past.txt" file if there isnt one already to solve the problem of installing
 
 from bs4 import BeautifulSoup
-from selenium import webdriver  # This module allows for the authentication through websites.
+from selenium import webdriver
 from twilio.rest import TwilioRestClient
 import time
 import os
@@ -44,7 +43,6 @@ def cleanUp():
 
     os.remove("current.txt")
 
-# TODO: Saving of a list into a text file, then loading it back into a dictionary
 # This method pulls a past text file called past.txt and saves it into a list,
 def loadPastTextFile():
     with open('past.txt') as f:
@@ -101,13 +99,13 @@ def sendTextMessage():
         	body="Your {} grade has been updated.".format(className[20:len(className)-12]),
     )
 
+# TODO: gradebookOne() and gradebookTwo() can be condensed into a single function that just takes their assignmentNames and assignmentGrades as parameters.
+
 # This method handles if the iframe is Gradebook.
 # Gradebook page title is "Gradebook Tool"
 def gradebookOne():
     assignmentNames = gradebook.find_all("td", {"class": "left"}) # This grabs the assignment names
     assignmentGrades = gradebook.find_all("td", {"class": "center"}) # This grabs the assignment names
-
-    # TODO: Edit the below methods to look similar to Gradebook 2 since we are simply checking smaller
 
     for i in assignmentNames:
         current.append(i)
@@ -135,6 +133,7 @@ def gradebookTwo():
     for i in current:
         outputToCurrent.write("%s\n" % i)
 
+# This determines if past.txt exists or not
 if not os.path.isfile("past.txt"):
     f = open("past.txt", "w")
     dontNotify = True
