@@ -32,6 +32,7 @@ emailAlert = False
 pastTextFile = []
 currentTextFile = []
 current = []
+dontNotify = False
 
 # This method is called at the end of the program to copy the new current into
 # past.txt and remove current.txt
@@ -59,6 +60,9 @@ def checkSimilarity():
         exit()
     # TODO: Now we have to update the "past.txt" file since we have a new standard to check against.
     else:
+        if dontNotify:
+            cleanUp()
+            exit()
         if smsAlert:
             sendTextMessage()
         if iosAlert:
@@ -68,13 +72,6 @@ def checkSimilarity():
         else:
             print("Your grade has been updated.")
         cleanUp()
-
-# This method is called in order to write the new past file.
-# IN DEVELOPMENT
-def createNewPast():
-
-    sys.exit()
-    return 0
 
 # This method is for anyone on Mac OSX who wishes to receive notifications of when the grades are posted through Notification Center.
 def sendNotification(title, subtitle, message):
@@ -108,20 +105,17 @@ def gradebookOne():
     assignmentNames = gradebook.find_all("td", {"class": "left"}) # This grabs the assignment names
     assignmentGrades = gradebook.find_all("td", {"class": "center"}) # This grabs the assignment names
 
-    gradeDictionary = {}
-
     # TODO: Edit the below methods to look similar to Gradebook 2 since we are simply checking smaller
-    # chunks of HTML now.
-    count = 0
 
     for i in assignmentNames:
-        list = []
-        for j in range(0, 3):
-            list[j] = assignmentGrades[count]
-            count = count + 1
-        gradeDictionary[i.get_tex()] = list
+        current.append(i)
 
-    print(gradeDictionary)
+    for i in assignmentGrades:
+        current.append(i)
+
+    outputToCurrent = open("current.txt", "w")
+    for i in current:
+        outputToCurrent.write("%s\n" % i)
 
 # This method handles if the iframe is Gradebook 2.
 # Gradebook 2 page title is "Gradebook"
@@ -139,11 +133,11 @@ def gradebookTwo():
     for i in current:
         outputToCurrent.write("%s\n" % i)
 
-if os.path.isfile("past.txt"):
-    loadPastTextFile()
-# TODO: Finish method below.
-else:
-    createNewPast()
+if not os.path.isfile("past.txt"):
+    f = open("past.txt", "w")
+    dontNotify = True
+
+loadPastTextFile()
 
 attempts = 0
 while attempts < 3:
@@ -159,7 +153,11 @@ while attempts < 3:
         password_field.submit()
 
         # This is the gradebook which are attempting to access.
-        driver.get("https://sakai.rutgers.edu/portal/site/3c91ebbf-3c52-4572-98f9-899a77c7f227/page/301b5faf-8f77-4f4a-a282-e44edc801f3d")
+        # Data 101: https://sakai.rutgers.edu/portal/site/848d9ee2-3e91-4935-bed6-ac8e4c77f22c/page/9f5d49e0-8574-4395-b192-65b0b52780ec
+        # Intl Econ: https://sakai.rutgers.edu/portal/site/8f1472b9-9413-4795-99d5-fd1fa81b17c3/page/9fc30ca2-3349-4a21-85df-0cf6e69481bd
+        # Comp Arch: https://sakai.rutgers.edu/portal/site/7d6cf024-b944-4e38-a21a-06f73f427ce4/page/fedd6c39-4d6a-4a46-8a2f-f8aaf97b5df4
+        # Disc Stru: https://sakai.rutgers.edu/portal/site/3c91ebbf-3c52-4572-98f9-899a77c7f227/page/301b5faf-8f77-4f4a-a282-e44edc801f3d
+        driver.get("https://sakai.rutgers.edu/portal/site/848d9ee2-3e91-4935-bed6-ac8e4c77f22c/page/9f5d49e0-8574-4395-b192-65b0b52780ec")
         break
     except:
         print("Connection Error: Trying Again")
