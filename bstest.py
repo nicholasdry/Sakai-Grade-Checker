@@ -10,6 +10,7 @@ import os
 import sys
 
 pastTextFile = []
+currentTextFile = []
 current = []
 
 # TODO: Saving of a list into a text file, then loading it back into a dictionary
@@ -19,7 +20,7 @@ def loadPastTextFile():
         pastTextFile.append(f.read().split())
 
 def checkSimilarity():
-    if current == pastTextFile:
+    if currentTextFile == pastTextFile:
         print("same")
     else:
         print("not same")
@@ -70,13 +71,12 @@ def gradebookTwo():
     for i in assignmentGrades:
         current.append(i)
 
-    past = open("current.txt", "w")
+    outputToCurrent = open("current.txt", "w")
     for i in current:
-        past.write("%s\n" % i)
+        outputToCurrent.write("%s\n" % i)
 
-    with open('current.txt') as f:
-        current.append(f.read().split())
-
+    # with open('current.txt') as f:
+    #     currentTextFile.append(f.read().split())
 
 
 loadPastTextFile()
@@ -124,8 +124,10 @@ if gradebook.title.string == "Gradebook":
 else:
     gradebookOne()
 
+continueThrough = int(raw_input("Continue > "))
+
 # TODO: Send notification, Title = Class Name, Subtitle = Assignment Name, Message = Assignment Grade
 checkSimilarity()
 
-for i in current:
+for i in currentTextFile:
     print(i)
