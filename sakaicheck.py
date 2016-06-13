@@ -1,7 +1,6 @@
 # Nicholas Dry http://www.nicholasdry.com
 
 # TODO: Allow for the checking of more than one class
-# TODO: Check if the past.txt file exists, if not, create and load the first scrape into it
 # TODO: Implement API for email updates if grade updates
 # POTENTIAL TODO: Create a blank "past.txt" file if there isnt one already to solve the problem of installing
 
@@ -34,6 +33,8 @@ currentTextFile = []
 current = []
 dontNotify = False
 
+className = ""
+
 # This method is called at the end of the program to copy the new current into
 # past.txt and remove current.txt
 def cleanUp():
@@ -61,16 +62,17 @@ def checkSimilarity():
     # TODO: Now we have to update the "past.txt" file since we have a new standard to check against.
     else:
         if dontNotify:
+            sendNotification("Sakai Grade Checker", "Course Installation Complete", "Thanks for using!")
             cleanUp()
             exit()
         if smsAlert:
             sendTextMessage()
         if iosAlert:
-            sendNotification("Sakai Grade Checker", "Grade Update", "Your grade has been updated.")
+            sendNotification("{}".format(className[20:len(className)-12]), "Grade Update", "Your grade has been updated.")
         if emailAlert:
             sendEmail()
         else:
-            print("Your grade has been updated.")
+            print("Your {} grade has been updated.".format(className[20:len(className)-12]))
         cleanUp()
 
 # This method is for anyone on Mac OSX who wishes to receive notifications of when the grades are posted through Notification Center.
@@ -96,7 +98,7 @@ def sendTextMessage():
     client.messages.create(
     		to=userCellPhone,
         	from_="+18566197129",
-        	body="Your grade has been updated.",
+        	body="Your {} grade has been updated.".format(className[20:len(className)-12]),
     )
 
 # This method handles if the iframe is Gradebook.
@@ -166,6 +168,11 @@ while attempts < 3:
 if attempts == 3:
     sendNotification("ERROR", "Unable to Connect to Sakai", "Internet Connection Not Available")
     exit()
+
+# This section simply grabs the title of the class in order to clean up the notifications.
+html = driver.page_source
+justForTitle = BeautifulSoup(html, "html.parser")
+className = justForTitle.title.string
 
 frame = driver.find_element_by_tag_name("iframe")   # We want to grab the iframe.
 driver.switch_to_frame(frame)   # Now we send our driver to that new frame which allows us to access the page source below.
