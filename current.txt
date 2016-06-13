@@ -1,14 +1,8 @@
-<div class="x-grid3-cell-inner x-grid3-col-S_ITM_NM" unselectable="on">Assignment 05 : Cache Simulator</div>
-<div class="x-grid3-cell-inner x-grid3-col-S_ITM_NM" unselectable="on">Assignment 01:  A Partial Tokenizer</div>
-<div class="x-grid3-cell-inner x-grid3-col-S_ITM_NM" unselectable="on">Assignment 02: Computer Arithmetic</div>
-<div class="x-grid3-cell-inner x-grid3-col-S_ITM_NM" unselectable="on">Assignment 03: Assembly Language Programming</div>
-<div class="x-grid3-cell-inner x-grid3-col-S_ITM_NM" unselectable="on">Assignment 04: Y86 Emulator</div>
-<div class="x-grid3-cell-inner x-grid3-col-S_ITM_NM" unselectable="on">Midterm Exam</div>
-<div class="x-grid3-cell-inner x-grid3-col-S_ITM_NM" unselectable="on">Final Exam</div>
-<div class="x-grid3-cell-inner x-grid3-col-S_GRD" unselectable="on"></div>
-<div class="x-grid3-cell-inner x-grid3-col-S_GRD" unselectable="on">70.9</div>
-<div class="x-grid3-cell-inner x-grid3-col-S_GRD" unselectable="on">97.5</div>
-<div class="x-grid3-cell-inner x-grid3-col-S_GRD" unselectable="on">110</div>
-<div class="x-grid3-cell-inner x-grid3-col-S_GRD" unselectable="on">210</div>
-<div class="x-grid3-cell-inner x-grid3-col-S_GRD" unselectable="on">95</div>
-<div class="x-grid3-cell-inner x-grid3-col-S_GRD" unselectable="on">125</div>
+<div class="x-grid3-cell-inner x-grid3-col-S_ITM_NM" unselectable="on">HW</div>
+<div class="x-grid3-cell-inner x-grid3-col-S_ITM_NM" unselectable="on">Quiz</div>
+<div class="x-grid3-cell-inner x-grid3-col-S_ITM_NM" unselectable="on">Midterm</div>
+<div class="x-grid3-cell-inner x-grid3-col-S_ITM_NM" unselectable="on">Final</div>
+<div class="x-grid3-cell-inner x-grid3-col-S_GRD" unselectable="on">7.5</div>
+<div class="x-grid3-cell-inner x-grid3-col-S_GRD" unselectable="on">16.333</div>
+<div class="x-grid3-cell-inner x-grid3-col-S_GRD" unselectable="on">24</div>
+<div class="x-grid3-cell-inner x-grid3-col-S_GRD" unselectable="on">27.216</div>

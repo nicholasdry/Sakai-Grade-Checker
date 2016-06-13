@@ -2,13 +2,32 @@
 # Copyright 2016
 
 # TODO: Allow for the checking of more than one class
+# TODO: Check if the past.txt file exists, if not, create and load the first scrape into it
+# TODO: Implement API for email updates if grade updates
 
 from bs4 import BeautifulSoup   # This module allows for the scraping of the website.
 from selenium import webdriver  # This module allows for the authentication through websites.
 import time # This module allows for the sleep function to be called.
 import os
 import sys
+from twilio.rest import TwilioRestClient
 
+##########################################################################
+# BELOW ARE THE VARIABLES WHICH NEED TO BE ALTERED DEPENDING ON THE USER.#
+##########################################################################
+
+netID = "nsd48"
+netIDPassword = "Mustafa12578"
+userEmail = "nicholasdry@me.com"
+userCellPhone = +18563258310
+
+# These are boolean values to change to determine which updates you would like to recieve.
+# By default these are all set to False.
+smsAlert = True
+iosAlert = True
+emailAlert = False
+
+# These variables hold
 pastTextFile = []
 currentTextFile = []
 current = []
@@ -19,11 +38,25 @@ def loadPastTextFile():
     with open('past.txt') as f:
         pastTextFile.append(f.read().split())
 
+# This method pulls the current text file which is being worked on.
+def loadCurrentTextFile():
+    with open('current.txt') as f:
+        currentTextFile.append(f.read().split())
+
+# This method is called to compare the gradebook files and direct the program from there.
 def checkSimilarity():
     if currentTextFile == pastTextFile:
-        print("same")
+        exit()
+    # TODO: Now we have to update the "past.txt" file since we have a new standard to check against.
     else:
-        print("not same")
+        if smsAlert:
+            sendTextMessage()
+        if iosAlert:
+            sendNotification("Sakai Grade Checker", "Grade Update", "Your grade has been updated.")
+        if emailAlert:
+            sendEmail()
+        else:
+            print("Your grade has been updated.")
 
 # This method is for anyone on Mac OSX who wishes to receive notifications of when the grades are posted through Notification Center.
 def sendNotification(title, subtitle, message):
@@ -37,8 +70,19 @@ def sendEmail():
     return 0
 
 # This method is for anyone who wishes to recieve text notifications of grade changes.
+# TODO: Scrape for the name of the class which the grade has been updated.
 def sendTextMessage():
-    return 0
+    # put your own credentials here
+    ACCOUNT_SID = "AC684184f26e7ac3088a17c73be11536a8"
+    AUTH_TOKEN = "e0f237315288cc5ca43eb30e3d2655b5"
+
+    client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
+
+    client.messages.create(
+    		to=userCellPhone,
+        	from_="+18566197129",
+        	body="Your grade has been updated.",
+    )
 
 # This method handles if the iframe is Gradebook.
 # Gradebook page title is "Gradebook Tool"
@@ -81,13 +125,7 @@ def gradebookTwo():
 
 loadPastTextFile()
 
-print("Loaded")
-
-for i in pastTextFile:
-    print(i)
-
 attempts = 0
-
 while attempts < 3:
     try:
         driver = webdriver.PhantomJS()  # PhantomJS allows the script to run without opening up Firefox or any browser
@@ -95,12 +133,12 @@ while attempts < 3:
 
         username_field = driver.find_element_by_name("username") # Sakai nicely names its fields.
         password_field = driver.find_element_by_name("password")
-        username_field.send_keys("nsd48") # User NetID
-        password_field.send_keys("Mustafa12578") # User
+        username_field.send_keys(netID) # User NetID
+        password_field.send_keys(netIDPassword) # User
         password_field.submit() # submit it
 
         # This is the gradebook which are attempting to access
-        driver.get("https://sakai.rutgers.edu/portal/site/8f1472b9-9413-4795-99d5-fd1fa81b17c3/page/9fc30ca2-3349-4a21-85df-0cf6e69481bd")
+        driver.get("https://sakai.rutgers.edu/portal/site/3c91ebbf-3c52-4572-98f9-899a77c7f227/page/301b5faf-8f77-4f4a-a282-e44edc801f3d")
         break
     except:
         print("Connection Error: Trying Again")
@@ -124,10 +162,8 @@ if gradebook.title.string == "Gradebook":
 else:
     gradebookOne()
 
-continueThrough = int(raw_input("Continue > "))
-
 # TODO: Send notification, Title = Class Name, Subtitle = Assignment Name, Message = Assignment Grade
-checkSimilarity()
+# checkSimilarity()
+loadCurrentTextFile()
 
-for i in currentTextFile:
-    print(i)
+checkSimilarity()
