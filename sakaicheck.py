@@ -15,8 +15,10 @@ import sys
 # BELOW ARE THE VARIABLES WHICH NEED TO BE ALTERED DEPENDING ON THE USER.#
 ##########################################################################
 
-netID = "nsd48"
-netIDPassword = "Mustafa12578"
+netID = "changeMe"
+netIDPassword = "changeMe"
+
+# Haven't made use of an email API yet.
 userEmail = "nicholasdry@me.com"
 userCellPhone = +18563258310
 
@@ -57,7 +59,6 @@ def loadCurrentTextFile():
 def checkSimilarity():
     if currentTextFile == pastTextFile:
         exit()
-    # TODO: Now we have to update the "past.txt" file since we have a new standard to check against.
     else:
         if dontNotify:
             sendNotification("Sakai Grade Checker", "Course Installation Complete", "Thanks for using!")
@@ -85,9 +86,8 @@ def sendEmail():
     return 0
 
 # This method is for anyone who wishes to recieve text notifications of grade changes.
-# TODO: Scrape for the name of the class which the grade has been updated.
 def sendTextMessage():
-    # put your own credentials here
+    # My Twilio credentials
     ACCOUNT_SID = "AC684184f26e7ac3088a17c73be11536a8"
     AUTH_TOKEN = "e0f237315288cc5ca43eb30e3d2655b5"
 
@@ -98,8 +98,6 @@ def sendTextMessage():
         	from_="+18566197129",
         	body="Your {} grade has been updated.".format(className[20:len(className)-12]),
     )
-
-# TODO: gradebookOne() and gradebookTwo() can be condensed into a single function that just takes their assignmentNames and assignmentGrades as parameters.
 
 # This method handles if the iframe is Gradebook.
 # Gradebook page title is "Gradebook Tool"
@@ -144,7 +142,8 @@ attempts = 0
 while attempts < 3:
     try:
         # PhantomJS allows the script to run without opening up Firefox or any browser.
-        driver = webdriver.PhantomJS()
+        # You can also use webdriver.Firefox() but it will open up a browser window
+	driver = webdriver.PhantomJS()
         driver.get("https://cas.rutgers.edu/login?service=https%3A%2F%2Fsakai.rutgers.edu%2Fsakai-login-tool%2Fcontainer")  # This is the sakai homepage
 
         username_field = driver.find_element_by_name("username")
@@ -153,12 +152,12 @@ while attempts < 3:
         password_field.send_keys(netIDPassword)
         password_field.submit()
 
-        # This is the gradebook which are attempting to access.
+        # This are the gradebooks I have tried on mine.
         # Data 101: https://sakai.rutgers.edu/portal/site/848d9ee2-3e91-4935-bed6-ac8e4c77f22c/page/9f5d49e0-8574-4395-b192-65b0b52780ec
         # Intl Econ: https://sakai.rutgers.edu/portal/site/8f1472b9-9413-4795-99d5-fd1fa81b17c3/page/9fc30ca2-3349-4a21-85df-0cf6e69481bd
         # Comp Arch: https://sakai.rutgers.edu/portal/site/7d6cf024-b944-4e38-a21a-06f73f427ce4/page/fedd6c39-4d6a-4a46-8a2f-f8aaf97b5df4
         # Disc Stru: https://sakai.rutgers.edu/portal/site/3c91ebbf-3c52-4572-98f9-899a77c7f227/page/301b5faf-8f77-4f4a-a282-e44edc801f3d
-        driver.get("https://sakai.rutgers.edu/portal/site/848d9ee2-3e91-4935-bed6-ac8e4c77f22c/page/9f5d49e0-8574-4395-b192-65b0b52780ec")
+        driver.get("https://sakai.rutgers.edu/portal/site/bf9592a4-b085-4547-9bd9-a3e286b0de28/page/395bd314-6b4a-4336-ae31-4230a26a0b31")
         break
     except:
         print("Connection Error: Trying Again")
@@ -187,6 +186,8 @@ if gradebook.title.string == "Gradebook":
 else:
     gradebookOne()
 
+# Loads the file into a list so we can check.
 loadCurrentTextFile()
 
+# Checks for similarities.
 checkSimilarity()
