@@ -157,7 +157,9 @@ while attempts < 3:
         # Intl Econ: https://sakai.rutgers.edu/portal/site/8f1472b9-9413-4795-99d5-fd1fa81b17c3/page/9fc30ca2-3349-4a21-85df-0cf6e69481bd
         # Comp Arch: https://sakai.rutgers.edu/portal/site/7d6cf024-b944-4e38-a21a-06f73f427ce4/page/fedd6c39-4d6a-4a46-8a2f-f8aaf97b5df4
         # Disc Stru: https://sakai.rutgers.edu/portal/site/3c91ebbf-3c52-4572-98f9-899a77c7f227/page/301b5faf-8f77-4f4a-a282-e44edc801f3d
-        driver.get("https://sakai.rutgers.edu/portal/site/bf9592a4-b085-4547-9bd9-a3e286b0de28/page/395bd314-6b4a-4336-ae31-4230a26a0b31")
+        
+
+	driver.get("https://sakai.rutgers.edu/portal/site/8f1472b9-9413-4795-99d5-fd1fa81b17c3/page/9fc30ca2-3349-4a21-85df-0cf6e69481bd")
         break
     except:
         print("Connection Error: Trying Again")
@@ -171,6 +173,8 @@ if attempts == 3:
 html = driver.page_source
 justForTitle = BeautifulSoup(html, "html.parser")
 className = justForTitle.title.string
+
+driver.implicitly_wait(20)
 
 frame = driver.find_element_by_tag_name("iframe")   # We want to grab the iframe.
 driver.switch_to_frame(frame)   # Now we send our driver to that new frame which allows us to access the page source below.
