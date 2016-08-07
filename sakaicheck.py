@@ -15,8 +15,8 @@ import sys
 # BELOW ARE THE VARIABLES WHICH NEED TO BE ALTERED DEPENDING ON THE USER.#
 ##########################################################################
 
-netID = "changeMe"
-netIDPassword = "changeMe"
+netID = "changeme"
+netIDPassword = "changeme"
 
 # Haven't made use of an email API yet.
 userEmail = "nicholasdry@me.com"
@@ -141,7 +141,7 @@ loadPastTextFile()
 attempts = 0
 # PhantomJS allows the script to run without opening up Firefox or any browser.
 # You can also use webdriver.Firefox() but it will open up a browser window
-driver = webdriver.PhantomJS()
+driver = webdriver.Firefox()
 driver.get("https://cas.rutgers.edu/login?service=https%3A%2F%2Fsakai.rutgers.edu%2Fsakai-login-tool%2Fcontainer")  # This is the sakai homepage
 
 username_field = driver.find_element_by_name("username")
@@ -168,7 +168,7 @@ html = driver.page_source
 justForTitle = BeautifulSoup(html, "html.parser")
 className = justForTitle.title.string
 
-driver.implicitly_wait(20)
+time.sleep(10)
 
 frame = driver.find_element_by_tag_name("iframe")   # We want to grab the iframe.
 driver.switch_to_frame(frame)   # Now we send our driver to that new frame which allows us to access the page source below.
