@@ -139,25 +139,32 @@ if not os.path.isfile("past.txt"):
 loadPastTextFile()
 
 attempts = 0
-# PhantomJS allows the script to run without opening up Firefox or any browser.
-# You can also use webdriver.Firefox() but it will open up a browser window
-driver = webdriver.Firefox()
-driver.get("https://cas.rutgers.edu/login?service=https%3A%2F%2Fsakai.rutgers.edu%2Fsakai-login-tool%2Fcontainer")  # This is the sakai homepage
 
-username_field = driver.find_element_by_name("username")
-password_field = driver.find_element_by_name("password")
-username_field.send_keys(netID)
-password_field.send_keys(netIDPassword)
-password_field.submit()
+while attempts < 3:
+    try:
+        # PhantomJS allows the script to run without opening up Firefox or any browser.
+        # You can also use webdriver.Firefox() but it will open up a browser window
+        driver = webdriver.Firefox()
+        driver.get("https://cas.rutgers.edu/login?service=https%3A%2F%2Fsakai.rutgers.edu%2Fsakai-login-tool%2Fcontainer")  # This is the sakai homepage
 
-# This are the gradebooks I have tried on mine.
-# Data 101: https://sakai.rutgers.edu/portal/site/848d9ee2-3e91-4935-bed6-ac8e4c77f22c/page/9f5d49e0-8574-4395-b192-65b0b52780ec
-# Intl Econ: https://sakai.rutgers.edu/portal/site/8f1472b9-9413-4795-99d5-fd1fa81b17c3/page/9fc30ca2-3349-4a21-85df-0cf6e69481bd
-# Comp Arch: https://sakai.rutgers.edu/portal/site/7d6cf024-b944-4e38-a21a-06f73f427ce4/page/fedd6c39-4d6a-4a46-8a2f-f8aaf97b5df4
-# Disc Stru: https://sakai.rutgers.edu/portal/site/3c91ebbf-3c52-4572-98f9-899a77c7f227/page/301b5faf-8f77-4f4a-a282-e44edc801f3d
+        username_field = driver.find_element_by_name("username")
+        password_field = driver.find_element_by_name("password")
+        username_field.send_keys(netID)
+        password_field.send_keys(netIDPassword)
+        password_field.submit()
+
+        # This are the gradebooks I have tried on mine.
+        # Data 101: https://sakai.rutgers.edu/portal/site/848d9ee2-3e91-4935-bed6-ac8e4c77f22c/page/9f5d49e0-8574-4395-b192-65b0b52780ec
+        # Intl Econ: https://sakai.rutgers.edu/portal/site/8f1472b9-9413-4795-99d5-fd1fa81b17c3/page/9fc30ca2-3349-4a21-85df-0cf6e69481bd
+        # Comp Arch: https://sakai.rutgers.edu/portal/site/7d6cf024-b944-4e38-a21a-06f73f427ce4/page/fedd6c39-4d6a-4a46-8a2f-f8aaf97b5df4
+        # Disc Stru: https://sakai.rutgers.edu/portal/site/3c91ebbf-3c52-4572-98f9-899a77c7f227/page/301b5faf-8f77-4f4a-a282-e44edc801f3d
 
 
-driver.get("https://sakai.rutgers.edu/portal/site/bf9592a4-b085-4547-9bd9-a3e286b0de28/page/395bd314-6b4a-4336-ae31-4230a26a0b31")
+        driver.get("https://sakai.rutgers.edu/portal/site/bf9592a4-b085-4547-9bd9-a3e286b0de28/page/395bd314-6b4a-4336-ae31-4230a26a0b31")
+    except:
+        print("Trying again to locate element.")
+        attempts = attempts + 1
+
 
 if attempts == 3:
     sendNotification("ERROR", "Unable to Connect to Sakai", "Internet Connection Not Available")
