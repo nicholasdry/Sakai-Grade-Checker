@@ -15,8 +15,8 @@ import sys
 # BELOW ARE THE VARIABLES WHICH NEED TO BE ALTERED DEPENDING ON THE USER.#
 ##########################################################################
 
-netID = "changeme"
-netIDPassword = "changeme"
+netID = ""
+netIDPassword = ""
 
 # Haven't made use of an email API yet.
 userEmail = "nicholasdry@me.com"
@@ -161,6 +161,7 @@ while attempts < 3:
 
 
         driver.get("https://sakai.rutgers.edu/portal/site/bf9592a4-b085-4547-9bd9-a3e286b0de28/page/395bd314-6b4a-4336-ae31-4230a26a0b31")
+	break
     except:
         print("Trying again to locate element.")
         attempts = attempts + 1
