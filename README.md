@@ -4,12 +4,20 @@ A python script for Rutgers students which checks a specific gradebook at a cert
 
 # Requirements
 
-This python script requires several different modules in order to be used on their local computer.
+In order to use the Firefox driver for this script, you need an older version of Firefox, I recommend 24.0 because it is compatible with Selenium.
 
-- lorem
+[a link](https://ftp.mozilla.org/pub/firefox/releases/24.0/)
 
-# Usage
-
+The dependencies needed are:
+Selenium (for web authentication)
 ```
-python sakaicheck.py
+pip install selenium
+```
+BeautifulSoup (for web scraping)
+```
+pip install BeautifulSoup
+```
+Twilio REST API (for text messages)
+```
+pip install twilio
 ```
