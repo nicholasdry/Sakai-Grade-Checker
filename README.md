@@ -4,9 +4,7 @@ A python script for Rutgers students which checks a specific gradebook at a cert
 
 # Requirements
 
-In order to use the Firefox driver for this script, you need an older version of Firefox, I recommend 24.0 because it is compatible with Selenium.
-
-[a link](https://ftp.mozilla.org/pub/firefox/releases/24.0/)
+In order to use the Firefox driver for this script, you need an older version of Firefox, I recommend [24.0](https://ftp.mozilla.org/pub/firefox/releases/24.0/) because it is compatible with Selenium.
 
 The dependencies needed are:
 Selenium (for web authentication)
