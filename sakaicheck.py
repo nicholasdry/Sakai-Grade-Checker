@@ -88,8 +88,8 @@ def sendEmail():
 # This method is for anyone who wishes to recieve text notifications of grade changes.
 def sendTextMessage():
     # My Twilio credentials
-    ACCOUNT_SID = "AC684184f26e7ac3088a17c73be11536a8"
-    AUTH_TOKEN = "e0f237315288cc5ca43eb30e3d2655b5"
+    ACCOUNT_SID = "changeMe"
+    AUTH_TOKEN = "changeMe"
 
     client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
 
