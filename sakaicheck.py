@@ -15,6 +15,9 @@ import sys
 # BELOW ARE THE VARIABLES WHICH NEED TO BE ALTERED DEPENDING ON THE USER.#
 ##########################################################################
 
+classURLS = ["https://sakai.rutgers.edu/portal/site/33610e80-d4de-4f8d-a71b-05b311a691ab/tool/ff382e68-ccea-4014-8564-670bc11b5a07/studentView.jsf"
+            ]
+
 netID = ""
 netIDPassword = ""
 
@@ -160,7 +163,7 @@ while attempts < 3:
         # Disc Stru: https://sakai.rutgers.edu/portal/site/3c91ebbf-3c52-4572-98f9-899a77c7f227/page/301b5faf-8f77-4f4a-a282-e44edc801f3d
 
 
-        driver.get("https://sakai.rutgers.edu/portal/site/bf9592a4-b085-4547-9bd9-a3e286b0de28/page/395bd314-6b4a-4336-ae31-4230a26a0b31")
+        driver.get("https://sakai.rutgers.edu/portal/site/33610e80-d4de-4f8d-a71b-05b311a691ab/tool/ff382e68-ccea-4014-8564-670bc11b5a07/studentView.jsf")
 	break
     except:
         print("Trying again to locate element.")
